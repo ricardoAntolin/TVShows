@@ -1,0 +1,25 @@
+name: TVShows
+deploymentTarget:
+  iOS: 13.0
+options:
+  bundleIdPrefix: dev.ricardoantolin
+include:
+  - project_schemes.yml
+  - project_targets.yml
+  - project_packages.yml
+fileGroups:
+  - Configurations
+configs:
+  Staging Debug: debug
+  Production Debug: debug
+  Staging Release: release
+  Production Release: release
+  AppStore Debug: debug
+  AppStore Release: release
+configFiles:
+    Staging Debug: Configurations/DevelopmentStaging.xcconfig
+    Staging Release: Configurations/ReleaseStaging.xcconfig
+    Production Debug: Configurations/DevelopmentProduction.xcconfig
+    Production Release: Configurations/ReleaseProduction.xcconfig
+    AppStore Debug: Configurations/AppStore.xcconfig  
+    AppStore Release: Configurations/AppStore.xcconfig  

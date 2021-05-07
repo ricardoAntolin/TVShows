@@ -1,0 +1,10 @@
+packages:
+  OHHTTPStubs:
+    url: https://github.com/AliSoftware/OHHTTPStubs
+    version: 9.1.0
+  SnapshotTesting:
+    url: https://github.com/pointfreeco/swift-snapshot-testing
+    version: 1.8.2
+  CombineRealm:
+    url: https://github.com/istvan-kreisz/CombineRealm.git
+    version: 1.0.0

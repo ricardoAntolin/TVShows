@@ -1,0 +1,68 @@
+targets:
+  UI:
+    type: bundle.ui-testing
+    platform: iOS
+    info:
+      path: UITest/Info.plist
+    settings:
+      TEST_TARGET_NAME: TVShows
+      IPHONEOS_DEPLOYMENT_TARGET: 13.4
+    sources:
+      - path: UI
+        createIntermediateGroups: true
+      - path: Shared/Common
+        createIntermediateGroups: true
+    dependencies:
+      - target: TVShows
+
+  Unit:
+    type: bundle.unit-test
+    platform: iOS
+    info:
+      path: Unit/Info.plist
+    sources:
+      - path: Unit
+        createIntermediateGroups: true
+      - path: Shared/Common
+        createIntermediateGroups: true
+      - path: Shared/Stubs
+        createIntermediateGroups: true
+    dependencies:
+      - target: TVShows
+      - package: OHHTTPStubs
+
+  Screenshot:
+    type: bundle.unit-test
+    platform: iOS
+    info:
+      path: Screenshot/Info.plist
+    sources:
+      - path: Screenshot
+        createIntermediateGroups: true
+        excludes:
+          - "**/__Snapshots__" # We don't need to add snapshot testing references to the project.
+      - path: Shared/Common
+        createIntermediateGroups: true
+      - path: Shared/Stubs
+        createIntermediateGroups: true
+    dependencies:
+      - target: TVShows
+      - target: TVShowsSnapshotTesting
+      - package: OHHTTPStubs
+
+  TVShowsSnapshotTesting:
+    type: framework
+    settings:
+      ENABLE_BITCODE: false
+      FRAMEWORK_SEARCH_PATHS: $(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks
+      SWIFT_VERSION: 5.0
+    platform: iOS
+    sources:
+      - path: Frameworks/TVShowsSnapshotTesting
+        createIntermediateGroups: true
+    info:
+      path: Frameworks/TVShowsSnapshotTesting/Info.plist
+    implicit: true
+    dependencies:
+      - package: SnapshotTesting
+      - sdk: XCTest.framework

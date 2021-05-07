@@ -1,0 +1,55 @@
+include:
+  - Tests/project_targets_tests.yml
+
+targetTemplates:
+  BaseFramework:
+    type: framework
+    platform: iOS
+    deploymentTarget: "13.0"
+    implicit: true
+targets:
+  TVShows:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources: [TVShows]
+    dependencies:
+      - target: Domain
+      - target: Data
+      - target: NetworkProvider
+    preBuildScripts:
+      - script: "sh $PROJECT_DIR/Scripts/run_pre_scripts.sh"
+        name: "Pre Scripts"
+    configFiles:
+      Staging Debug: TVShows/Configurations/DevelopmentStaging.xcconfig
+      Staging Release: TVShows/Configurations/ReleaseStaging.xcconfig
+      Production Debug: TVShows/Configurations/DevelopmentProduction.xcconfig
+      Production Release: TVShows/Configurations/ReleaseProduction.xcconfig
+      AppStore Debug: TVShows/Configurations/AppStore.xcconfig  
+      AppStore Release: TVShows/Configurations/AppStore.xcconfig  
+  Domain:
+    templates: [BaseFramework]
+    sources:
+      - path: Domain
+        excludes:
+          - "Entitlements/**"
+  Data:
+    templates: [BaseFramework]
+    sources:
+      - path: Data
+        excludes:
+          - "Entitlements/**"
+    dependencies:
+      - target: Domain
+  NetworkProvider:
+    templates: [BaseFramework]
+    sources:
+      - path: NetworkProvider
+        excludes:
+          - "Entitlements/**"
+    dependencies:
+      - target: Data
+
+
+
+

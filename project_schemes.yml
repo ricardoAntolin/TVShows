@@ -1,0 +1,52 @@
+schemes:
+  TVShows α:
+    templates:
+      - App
+    templateAttributes:
+      configRunAndTest: Staging Debug
+      configArchive: Staging Release
+      target: TVShows
+  TVShows ß:
+    templates:
+      - App
+    templateAttributes:
+      configRunAndTest: Production Debug
+      configArchive: Production Release
+      target: TVShows
+  TVShows:
+    templates:
+      - App
+    templateAttributes:
+      configRunAndTest: AppStore Release
+      configArchive: AppStore Release
+      target: TVShows
+schemeTemplates:
+  App:
+    build:
+        targets:
+          TVShows: all
+    run:
+        config: ${configRunAndTest}
+    test:
+        config: ${configRunAndTest}
+        language: "en"
+        region: "US"
+        targets: 
+          - name: UI
+            parallelizable: true
+          - name: Unit 
+            parallelizable: true
+          - name: Screenshot 
+            parallelizable: true
+        environmentVariables:
+          RUNNING_TESTS: "1"
+          SNAPSHOT_ARTIFACTS: "/tmp/__SnapshotArtifacts__"
+    profile:
+        config: ${configRunAndTest}
+    analyze:
+        config: ${configRunAndTest}
+    archive:
+        config: ${configArchive}
+        customArchiveName: ${target}
+        revealArchiveInOrganizer: false
+
