@@ -4,17 +4,16 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private lazy var repositoryProvider = RepositoryProviderImp(baseURL: URL(string: "https://api.tvmaze.com/shows")!)
+    private lazy var useCaseProvider = UseCaseProviderImp(repositoryProvider: repositoryProvider)
+    private lazy var store = AppStore(initialState: .init(), reducer: appReducer, environment: useCaseProvider)
 
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-
-        let repositoryProvider = RepositoryProvider(baseURL: URL(string: "https://api.tvmaze.com/shows")!)
-        let useCaseProvider = UseCaseProvider(repositoryProvider: repositoryProvider)
-
-        let contentView = SplashView(viewModel: SplashViewModel())
+        let contentView = TVShowsListView().environmentObject(store)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
