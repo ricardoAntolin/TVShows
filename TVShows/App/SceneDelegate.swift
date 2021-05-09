@@ -4,7 +4,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private lazy var repositoryProvider = RepositoryProviderImp(baseURL: URL(string: "https://api.tvmaze.com/shows")!)
+    private lazy var repositoryProvider = RepositoryProviderImp(baseURL: URL(string: "https://api.tvmaze.com")!)
     private lazy var useCaseProvider = UseCaseProviderImp(repositoryProvider: repositoryProvider)
     private lazy var store = AppStore(initialState: .init(), reducer: appReducer, environment: useCaseProvider)
 
@@ -13,9 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        let contentView = TVShowsListView().environmentObject(store)
-
-        // Use a UIHostingController as window root view controller.
+        let contentView = SplashView().environmentObject(store)
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)
@@ -52,5 +50,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
 }

@@ -4,12 +4,12 @@ import Data
 import Domain
 
 protocol RepositoryProvider {
-    var httpClient: HTTPClient { get }
+    var httpClient: HTTPClientRequestHandling { get }
 }
 
 final class RepositoryProviderImp: RepositoryProvider {
 
-    let httpClient: HTTPClient
+    let httpClient: HTTPClientRequestHandling
 
     init(baseURL: URL) {
         self.httpClient = HTTPClient(baseURL: baseURL)

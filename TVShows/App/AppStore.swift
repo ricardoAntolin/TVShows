@@ -22,6 +22,14 @@ func appReducer(
     case let .setTVShows(tvShows):
         state.tvShows = tvShows
     case let .fetchPage(page):
+        let tvShow = TVShowMother.uiModel()
+
+        if page == 0 {
+            return Just(AppAction.setTVShows(tvShows: [tvShow]))
+                .eraseToAnyPublisher()
+        }
+        return Just(AppAction.updateTVShows(tvShows: [tvShow]))
+            .eraseToAnyPublisher()
         #warning("TODO Call to usecase")
     }
     return Empty().eraseToAnyPublisher()

@@ -5,18 +5,23 @@ targetTemplates:
   BaseFramework:
     type: framework
     platform: iOS
-    deploymentTarget: "13.0"
+    deploymentTarget: "14.0"
     implicit: true
 targets:
   TVShows:
     type: application
     platform: iOS
-    deploymentTarget: "13.0"
-    sources: [TVShows]
+    deploymentTarget: "14.0"
+    sources: 
+          - path: TVShows
+            createIntermediateGroups: true
+          - path: Tests/Shared/Common
+            createIntermediateGroups: true
     dependencies:
       - target: Domain
       - target: Data
       - target: NetworkProvider
+      - package: SDWebImageSwiftUI
     preBuildScripts:
       - script: "sh $PROJECT_DIR/Scripts/run_pre_scripts.sh"
         name: "Pre Scripts"
