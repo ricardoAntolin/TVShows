@@ -81,19 +81,6 @@ public struct Dimensions {
         public static let medium: CGFloat = 24
         /// 32
         public static let large: CGFloat = 32
-
-        public struct Shadow {
-            /// 2
-            public static let x3Small: CGFloat = 2
-            /// 4
-            public static let x2Small: CGFloat = 4
-            /// 8
-            public static let xSmall: CGFloat = 8
-            /// 16
-            public static let small: CGFloat = 16
-            /// 32
-            public static let large: CGFloat = 32
-        }
     }
 
     public struct AnimationDuration {
@@ -108,13 +95,13 @@ public struct Dimensions {
     }
 
     public struct Opacity {
-            /// 0.08
-            public static let xSmall: Double = 0.2
-            /// 0.16
-            public static let medium: Double = 0.4
-            /// 0.24
-            public static let large: Double = 0.8
-            /// 1
-            public static let full: Double = 1
-        }
+        /// 0.08
+        public static let xSmall: Double = 0.2
+        /// 0.16
+        public static let medium: Double = 0.4
+        /// 0.24
+        public static let large: Double = 0.8
+        /// 1
+        public static let full: Double = 1
+    }
 }

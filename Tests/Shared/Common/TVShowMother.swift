@@ -1,4 +1,5 @@
 import Foundation
+@testable import TVShows
 
 struct TVShowMother {
     // swiftlint:disable line_length

@@ -1,6 +1,8 @@
 import NetworkProvider
 import Combine
 
+@testable import TVShows
+
 final class UseCaseProviderMock: UseCaseProvider {
     var repositoryProvider: RepositoryProvider = RepositoryProviderMock()
 }

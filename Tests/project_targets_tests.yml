@@ -6,14 +6,16 @@ targets:
       path: UITest/Info.plist
     settings:
       TEST_TARGET_NAME: TVShows
-      IPHONEOS_DEPLOYMENT_TARGET: 13.4
+      IPHONEOS_DEPLOYMENT_TARGET: 14.4
     sources:
       - path: UI
         createIntermediateGroups: true
-      - path: Shared/Common
+      - path: Shared/Stubs
         createIntermediateGroups: true
     dependencies:
       - target: TVShows
+      - package: SDWebImageSwiftUI
+      - package: OHHTTPStubs
 
   Unit:
     type: bundle.unit-test
