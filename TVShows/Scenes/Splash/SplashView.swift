@@ -43,13 +43,14 @@ struct SplashView: View {
                 }
                 timing += 1
             }
-        }.preferredColorScheme(.dark)
+        }
+        .accentColor(.red)
+        .preferredColorScheme(.dark)
     }
 }
 
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
         SplashView()
-            .previewDevice("iPhone 11")
     }
 }

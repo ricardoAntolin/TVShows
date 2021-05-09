@@ -27,6 +27,5 @@ struct TVShowItemView: View {
 struct TVShowItemView_Previews: PreviewProvider {
     static var previews: some View {
         TVShowItemView(tvShow: TVShowMother.uiModel())
-            .previewDevice("iPhone 12")
     }
 }

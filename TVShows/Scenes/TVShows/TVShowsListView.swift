@@ -44,13 +44,15 @@ struct TVShowsListView: View {
         return ScrollView {
             LazyVGrid(columns: columns, spacing: Dimensions.Margin.xSmall) {
                 ForEach(Array(state.tvShows.enumerated()), id: \.offset) { index, tvShow in
-                    TVShowItemView(tvShow: tvShow)
-                        .onAppear {
-                            if index >= state.tvShows.count - 1 {
-                                currentPage += 1
-                                store.send(.fetchPage(page: currentPage))
+                    NavigationLink(destination: TVShowDetailsView(tvShow: tvShow)) {
+                        TVShowItemView(tvShow: tvShow)
+                            .onAppear {
+                                if index >= state.tvShows.count - 1 {
+                                    currentPage += 1
+                                    store.send(.fetchPage(page: currentPage))
+                                }
                             }
-                        }
+                    }
                 }
             }.padding(Dimensions.Margin.medium)
         }
