@@ -3,9 +3,13 @@ import NetworkProvider
 import Data
 import Domain
 
-final class RepositoryProvider {
+protocol RepositoryProvider {
+    var httpClient: HTTPClientRequestHandling { get }
+}
 
-    private let httpClient: HTTPClient
+final class RepositoryProviderImp: RepositoryProvider {
+
+    let httpClient: HTTPClientRequestHandling
 
     init(baseURL: URL) {
         self.httpClient = HTTPClient(baseURL: baseURL)

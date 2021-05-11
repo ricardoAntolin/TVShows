@@ -1,8 +1,12 @@
 import Domain
 
-final class UseCaseProvider {
+protocol UseCaseProvider {
+    var repositoryProvider: RepositoryProvider { get }
+}
 
-    private let repositoryProvider: RepositoryProvider
+final class UseCaseProviderImp: UseCaseProvider {
+
+    let repositoryProvider: RepositoryProvider
 
     init(repositoryProvider: RepositoryProvider) {
         self.repositoryProvider = repositoryProvider

@@ -1,4 +1,4 @@
-import UIKit
+import SwiftUI
 import SnapshotTesting
 import XCTest
 
@@ -10,7 +10,7 @@ public extension SnapshotTest {
     }
 
     func assert(
-        viewController: UIViewController,
+        swiftUIView: AnyView,
         height: CGFloat? = nil,
         record: Bool = false,
         waitFor: Double = 0.0,
@@ -18,7 +18,7 @@ public extension SnapshotTest {
         testName: String = #function,
         line: UInt = #line) {
         assertSnapshot(
-            matching: viewController,
+            matching: UIHostingController(rootView: swiftUIView),
             as: .wait(
                 for: waitFor,
                 on: Self.fixedSizeImage(withHeight: height) as SnapshotTesting.Snapshotting<UIViewController, UIImage>

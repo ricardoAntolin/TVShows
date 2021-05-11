@@ -1,6 +1,6 @@
 name: TVShows
 deploymentTarget:
-  iOS: 13.0
+  iOS: 14.0
 options:
   bundleIdPrefix: dev.ricardoantolin
 include:
