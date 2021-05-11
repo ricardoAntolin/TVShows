@@ -12,10 +12,12 @@ class TVShowsScreenshotTest: XCTestCase, SnapshotTest {
             environment: UseCaseProviderMock()
         )
 
-        let givenView = SplashView().environmentObject(givenStore)
+        let givenView = SplashView(scale: 3, opacity: 1)
+            .background(Color.black)
+            .environmentObject(givenStore)
             .eraseToAnyView()
 
-        assert(swiftUIView: givenView, waitFor: 6.0)
+        assert(swiftUIView: givenView)
     }
 
     func testTVShowsListView() {
@@ -26,12 +28,13 @@ class TVShowsScreenshotTest: XCTestCase, SnapshotTest {
         )
 
         let givenView = NavigationView {
-            TVShowsListView().environmentObject(givenStore)
+            TVShowsListView()
+                .environmentObject(givenStore)
         }
         .accentColor(.red)
         .eraseToAnyView()
 
-        assert(swiftUIView: givenView, waitFor: 5.0)
+        assert(swiftUIView: givenView)
     }
 
     func testTVShowDetailsView() {
@@ -39,13 +42,10 @@ class TVShowsScreenshotTest: XCTestCase, SnapshotTest {
         let givenView = NavigationView {
             TVShowDetailsView(tvShow: TVShowMother.uiModel())
         }
+        .background(Color.black)
         .accentColor(.red)
         .eraseToAnyView()
 
-        assert(swiftUIView: givenView, waitFor: 5.0)
+        assert(swiftUIView: givenView)
     }
-}
-
-func appReducerMock() {
-
 }

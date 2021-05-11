@@ -8,8 +8,13 @@ struct TVShowDetailsView: View {
             GeometryReader { geometry in
                 VStack(spacing: Dimensions.Margin.small) {
                     WebImage(url: tvShow.imageURL)
+                        .placeholder(Image(uiImage: Asset.placeholder.image))
                         .resizable()
-                        .frame(width: geometry.size.width, height: geometry.size.height / 2, alignment: .center)
+                        .frame(
+                            width: geometry.size.width,
+                            height: geometry.size.height * 0.75,
+                            alignment: .center
+                        )
                     Divider()
                     ScrollView(.vertical, showsIndicators: true) {
                         Text(tvShow.summary.extractHTMLTags())

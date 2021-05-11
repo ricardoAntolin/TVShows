@@ -7,11 +7,8 @@ struct TVShowItemView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             WebImage(url: tvShow.thumbnailURL)
+                .placeholder(Image(uiImage: Asset.placeholder.image))
                 .resizable()
-                .indicator { _, _ in
-                    ActivityIndicator()
-                        .foregroundColor(.red)
-                }
 
             Text(tvShow.name)
                 .frame(maxWidth: .infinity)
