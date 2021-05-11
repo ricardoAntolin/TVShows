@@ -7,9 +7,9 @@ public protocol TVShowsAPIDefinition {
 
 public final class TVShowsAPI: TVShowsAPIDefinition {
 
-    private let httpClient: HTTPClient
+    private let httpClient: HTTPClientRequestHandling
 
-    public init(httpClient: HTTPClient) {
+    public init(httpClient: HTTPClientRequestHandling) {
         self.httpClient = httpClient
     }
 

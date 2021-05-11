@@ -5,7 +5,7 @@ extension TVShowAPIModel: DataConvertibleType {
         return TVShowDataModel(
             id: id,
             name: name,
-            ratingAverage: rating.average,
+            ratingAverage: rating.average ?? 0,
             image: image.asDataEntity(),
             summary: summary
         )
