@@ -1,10 +1,10 @@
 import Foundation
 
-public enum StopsRequestDefinition {
+public enum TVShowsRequestDefinition {
     case getTVShows(page: Int)
 }
 
-extension StopsRequestDefinition: RequestDefinition {
+extension TVShowsRequestDefinition: RequestDefinition {
     public var path: String {
         switch self {
         case .getTVShows:
