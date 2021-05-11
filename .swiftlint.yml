@@ -1,3 +1,5 @@
 disabled_rules:
   - identifier_name
   - shorthand_operator
+  - force_cast
+  - force_try
