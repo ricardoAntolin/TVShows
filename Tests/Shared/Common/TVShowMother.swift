@@ -33,6 +33,23 @@ struct TVShowMother {
         )
     }
 
+    static func domainModel(
+        id: Int = defaultId,
+        name: String = defaultName,
+        ratingAverage: Double = defaultRatingAverage,
+        thumbnailURL: URL = defaultThumbnailURL,
+        imageURL: URL = defaultImageURL,
+        summary: String = defaultSummary
+    ) -> TVShow {
+        return TVShow(
+            id: id,
+            name: name,
+            ratingAverage: ratingAverage,
+            image: Image(medium: thumbnailURL, original: imageURL),
+            summary: summary
+        )
+    }
+
     static func dataModel(
         id: Int = defaultId,
         name: String = defaultName,

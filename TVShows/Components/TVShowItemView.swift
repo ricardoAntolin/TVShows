@@ -17,6 +17,7 @@ struct TVShowItemView: View {
                 .padding(Dimensions.Margin.small)
                 .background(Color.white.opacity(Dimensions.Opacity.medium))
         }
+        .accessibility(identifier: "TVShowItemView \(tvShow.id)")
         .cornerRadius(Dimensions.Radius.x2Small)
     }
 }

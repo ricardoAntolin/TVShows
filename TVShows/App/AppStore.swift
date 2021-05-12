@@ -14,7 +14,7 @@ enum AppAction {
 func appReducer(
     state: inout AppState,
     action: AppAction,
-    environment: UseCaseProvider
+    useCaseProvider: UseCaseProvider
 ) -> AnyPublisher<AppAction, Never> {
     switch action {
     case let .updateTVShows(tvShows):
@@ -22,17 +22,23 @@ func appReducer(
     case let .setTVShows(tvShows):
         state.tvShows = tvShows
     case let .fetchPage(page):
-        let tvShow = TVShowMother.uiModel()
-
-        if page == 0 {
-            return Just(AppAction.setTVShows(tvShows: [tvShow]))
-                .eraseToAnyPublisher()
-        }
-        return Just(AppAction.updateTVShows(tvShows: [tvShow]))
-            .eraseToAnyPublisher()
-        #warning("TODO Call to usecase")
+        return handleFetchPageAction(useCaseProvider: useCaseProvider, page: page)
     }
     return Empty().eraseToAnyPublisher()
+}
+
+private func handleFetchPageAction(
+    useCaseProvider: UseCaseProvider,
+    page: Int
+) -> AnyPublisher<AppAction, Never> {
+    return useCaseProvider
+        .getTVShowsPageUseCase
+        .execute(page: page)
+        .replaceError(with: [])
+        .map {
+            guard page != 0 else { return AppAction.setTVShows(tvShows: $0.asUIModel()) }
+            return AppAction.updateTVShows(tvShows: $0.asUIModel())
+        }.eraseToAnyPublisher()
 }
 
 typealias AppStore = Store<AppState, AppAction, UseCaseProvider>

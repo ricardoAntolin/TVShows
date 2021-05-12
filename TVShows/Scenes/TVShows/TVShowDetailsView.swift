@@ -10,6 +10,7 @@ struct TVShowDetailsView: View {
                     WebImage(url: tvShow.imageURL)
                         .placeholder(Image(uiImage: Asset.placeholder.image))
                         .resizable()
+                        .accessibility(identifier: "TVShowDetailsViewImage")
                         .frame(
                             width: geometry.size.width,
                             height: geometry.size.height * 0.75,
@@ -20,6 +21,7 @@ struct TVShowDetailsView: View {
                         Text(tvShow.summary.extractHTMLTags())
                             .font(.body)
                             .foregroundColor(.white)
+                            .accessibility(identifier: "TVShowDetailsViewSummary")
                     }.frame(width: geometry.size.width)
                 }
 
@@ -33,6 +35,7 @@ struct TVShowDetailsView: View {
                         Text(tvShow.name)
                             .font(Typography.heading1)
                             .foregroundColor(.red)
+                            .accessibility(identifier: "TVShowDetailsViewTitle \(tvShow.name)")
                     }
                 }
 

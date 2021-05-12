@@ -46,7 +46,7 @@ public struct ImageAPIModel: Codable, Equatable {
 }
 
 public struct RatingAPIModel: Codable, Equatable {
-    public let average: Double
+    public let average: Double?
 
     enum CodingKeys: String, CodingKey {
         case average

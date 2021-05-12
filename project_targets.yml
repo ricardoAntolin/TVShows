@@ -17,6 +17,8 @@ targets:
             createIntermediateGroups: true
           - path: Tests/Shared/Common
             createIntermediateGroups: true
+            excludes:
+              - "XCTestCase+Extension.swift"
     dependencies:
       - target: Domain
       - target: Data

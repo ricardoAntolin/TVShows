@@ -16,7 +16,7 @@ class TVShowsNetworkProviderTests: XCTestCase {
         let giventvShows: [TVShowAPIModel] = [TVShowMother.apiModel()]
         let givenPage = 1
 
-        tvShowsAPIMock.tvShows = giventvShows
+        tvShowsAPIMock.response = giventvShows
         let response = try! await(provider.fetchTVShows(page: givenPage))
 
         XCTAssertEqual(response, [TVShowMother.dataModel()])
