@@ -3,6 +3,9 @@ import SDWebImageSwiftUI
 
 struct TVShowDetailsView: View {
     @State var tvShow: TVShowUIModel
+    var formatedRating: String {
+        return String(format: "%.2f", tvShow.ratingAverage)
+    }
 
     var body: some View {
             GeometryReader { geometry in
@@ -13,15 +16,23 @@ struct TVShowDetailsView: View {
                         .accessibility(identifier: "TVShowDetailsViewImage")
                         .frame(
                             width: geometry.size.width,
-                            height: geometry.size.height * 0.75,
+                            height: geometry.size.height * 0.66,
                             alignment: .center
                         )
                     Divider()
                     ScrollView(.vertical, showsIndicators: true) {
-                        Text(tvShow.summary.extractHTMLTags())
-                            .font(.body)
-                            .foregroundColor(.white)
-                            .accessibility(identifier: "TVShowDetailsViewSummary")
+                        VStack(alignment: .leading) {
+                            Text("Rating: \(formatedRating)/10")
+                                .font(.title3)
+                                .foregroundColor(.white)
+                                .accessibility(identifier: "TVShowDetailsViewSummary")
+                            Divider()
+                            Text(tvShow.summary.extractHTMLTags())
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .accessibility(identifier: "TVShowDetailsViewSummary")
+                        }
+
                     }.frame(width: geometry.size.width)
                 }
 
