@@ -11,6 +11,21 @@ enum AppAction {
     case fetchPage(page: Int)
 }
 
+extension AppAction: Equatable {
+    public static func == (lhs: Self, rhs: Self) -> Bool {
+        switch (lhs, rhs) {
+        case (.setTVShows(let lhsTVShows), .setTVShows(let rhsTVShows)):
+            return lhsTVShows == rhsTVShows
+        case (.updateTVShows(let lhsTVShows), .updateTVShows(let rhsTVShows)):
+            return lhsTVShows == rhsTVShows
+        case (.fetchPage(let lhsPage), .fetchPage(let rhsPage)):
+            return lhsPage == rhsPage
+        default:
+            return false
+        }
+    }
+}
+
 func appReducer(
     state: inout AppState,
     action: AppAction,

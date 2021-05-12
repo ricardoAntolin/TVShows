@@ -6,9 +6,16 @@ import Combine
 @testable import TVShows
 
 final class UseCaseProviderMock: UseCaseProvider {
-    var getTVShowsPageUseCase: GetTVShowsPageUseCase = GetTVShowsPageUseCaseMock()
+    var getTVShowsPageUseCase: GetTVShowsPageUseCase
+    var repositoryProvider: RepositoryProvider
 
-    var repositoryProvider: RepositoryProvider = RepositoryProviderMock()
+    init(
+        getTVShowsPageUseCase: GetTVShowsPageUseCase = GetTVShowsPageUseCaseMock(),
+        repositoryProvider: RepositoryProvider = RepositoryProviderMock()
+    ) {
+        self.getTVShowsPageUseCase = getTVShowsPageUseCase
+        self.repositoryProvider = repositoryProvider
+    }
 }
 
 final class RepositoryProviderMock: RepositoryProvider {
