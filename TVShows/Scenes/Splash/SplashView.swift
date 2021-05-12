@@ -18,6 +18,7 @@ struct SplashView: View {
                         .foregroundColor(.red)
                         .scaleEffect(scale)
                         .opacity(opacity)
+                        .accessibility(identifier: "SplashViewText")
                         .onAppear(perform: {
                             withAnimation(.easeIn(duration: 1.0)) {
                                 scale = 3
