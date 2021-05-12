@@ -1,6 +1,6 @@
 import Foundation
 
-struct TVShowUIModel: Identifiable {
+struct TVShowUIModel: Identifiable, Equatable {
     public let id: Int
     public let name: String
     public let ratingAverage: Double
