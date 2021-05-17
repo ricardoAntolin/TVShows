@@ -60,7 +60,7 @@ Testing was separated in:
     - Data repository tests
     - Use case tests
     - Reducer tests
-- Screenshot tests:
+- Screenshot tests(has to be launched on iPhone 12 iOS 14 simulator):
     - Splash screen test
     - TVShows list test
     - TVShows details test
